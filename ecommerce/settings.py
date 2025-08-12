@@ -37,7 +37,7 @@ EMAIL_HOST       = 'smtp.gmail.com'
 EMAIL_PORT       = 587
 EMAIL_USE_TLS    = True
 EMAIL_HOST_USER = 'yassinelkhantour@gmail.com'
-EMAIL_HOST_PASSWORD = 'Yassine@204'  # ou app‑password si 2FA
+EMAIL_HOST_PASSWORD = 'Y' 
 DEFAULT_FROM_EMAIL  = 'Yass Pharmacy <no-reply@yasspharmacy.com>'
 ADMINS = [
     ('Yassin Admin', 'admin@yasspharmacy.com'),
@@ -101,10 +101,7 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    
 }
 
 
@@ -151,3 +148,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
