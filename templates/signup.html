@@ -1,0 +1,146 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription - Yassine Pharmacy</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .signup-container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2.5rem 2rem;
+      max-width: 450px;
+      width: 90%;
+    }
+
+    .pharmacy-title {
+      color: #2c3e50;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .form-label {
+      color: #495057;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control, .form-select {
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    }
+
+    .btn-signup {
+      background-color: #27ae60;
+      border: 2px solid #27ae60;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-signup:hover {
+      background-color: #219a52;
+      border-color: #219a52;
+      color: white;
+    }
+
+    .login-link {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .login-link a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      .signup-container {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .pharmacy-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2 class="pharmacy-title text-center">Créer un compte</h2>
+    
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label class="form-label">Nom d'utilisateur</label>
+        {{ form.username|add_class:"form-control" }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        {{ form.email|add_class:"form-control" }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mot de passe</label>
+        {{ form.password1|add_class:"form-control" }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Confirmer le mot de passe</label>
+        {{ form.password2|add_class:"form-control" }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Rôle</label>
+        {{ form.role|add_class:"form-select" }}
+      </div>
+
+      <button type="submit" class="btn btn-signup">S'inscrire</button>
+    </form>
+
+    <div class="login-link text-center">
+      <a href="{% url 'login' %}">Déjà inscrit ? Se connecter</a>
+    </div>
+  </div>
+</body>
+</html>

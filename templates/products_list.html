@@ -1,0 +1,25 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2 class="mt-4">Produits</h2>
+<a class="btn btn-success mb-3" href="{% url 'product_add' %}">Ajouter un produit</a>
+
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th></th></tr></thead>
+  <tbody>
+    {% for p in products %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }} DH</td>
+        <td>
+          <a class="btn btn-sm btn-primary" href="{% url 'product_edit' p.id %}">Modifier</a>
+          <form action="{% url 'product_delete' p.id %}" method="post" style="display:inline">
+            {% csrf_token %}
+            <button class="btn btn-sm btn-danger">Supprimer</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Facture</title>
+</head>
+<body>
+  <h1>Facture</h1>
+  <p>Nom : {{ invoice.first_name }} {{ invoice.last_name }}</p>
+  <p>Email : {{ invoice.email }}</p>
+  <p>Adresse : {{ invoice.address }} {{ invoice.address_optional }}</p>
+  <p>Pays : {{ invoice.state_country }}</p>
+  <p>ZIP : {{ invoice.postal_zip }}</p>
+  <p>Téléphone : {{ invoice.phone }}</p>
+</body>
+</html>

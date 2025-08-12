@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Yass Pharmacy </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="{% static 'website/fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="{% url 'shop' %}" class="js-logo-clone">Yass Pharmacy</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li ><a href="{% url 'shop' %}">Home</a></li>
+                  <li><a href="{% url 'boutique' %}">Store</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="cart.html" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+             
+            </a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                class="icon-menu"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0">
+            <a href="{% url 'shop' %}">Home</a> <span class="mx-2 mb-0">/</span>
+            <strong class="text-black">Contact</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="h3 mb-5 text-black">Get In Touch</h2>
+          </div>
+          <div class="col-md-12">
+    
+            <form action="#" method="post">
+    
+              <div class="p-3 p-lg-5 border">
+                  {% csrf_token %}
+                <form method="POST" action="{% url 'contact' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Adresse e-mail</label>
+    <input type="email" class="form-control" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="subject">Sujet</label>
+    <input type="text" class="form-control" name="subject" required>
+  </div>
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea class="form-control" name="message" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-section bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-white mb-4">Offices</h2>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 bg-white mb-3 rounded">
+              <span class="d-block text-black h6 text-uppercase">Rabat</span>
+              <p class="mb-0">203 Agdal, Rabat, Maroc</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="p-4 bg-white mb-3 rounded">
+              <span class="d-block text-black h6 text-uppercase">Tanger</span>
+              <p class="mb-0">203 Fake St. Adress, Tanger, Maroc</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+             <div class="block-7">
+  <h3 class="footer-heading mb-4">About Us</h3>
+  <p>Notre pharmacie en ligne a été fondée pour offrir à chacun un accès simple, rapide et sécurisé à des produits de santé de qualité. Alliant expertise pharmaceutique et innovation technologique, nous nous engageons à accompagner nos clients au quotidien avec sérieux, transparence et efficacité.</p>
+</div>
+
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">types de produits</h3>
+            <ul class="list-unstyled">
+              <li>Supplements</a></li>
+              <li>Vitamines</a></li>
+              <li>Régime Nutrition</a></li>
+              <li>Tea  Coffee</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address">11000, Sala al jadida , Rabat-sale-kenitre , Rabat , Maroc</li>
+                <li class="phone"><a href="tel://23923929210">+212 621839926</a></li>
+                <li class="email">yassinelkhantour@gmail.com</li>
+              </ul>
+            </div>
+
+
+
+          </div>
+        </div>
+        
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+ 
+<script src="{% static 'website/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'website/js/jquery-ui.js' %}"></script>
+<script src="{% static 'website/js/popper.min.js' %}"></script>
+<script src="{% static 'website/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'website/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'website/js/aos.js' %}"></script>
+<script src="{% static 'website/js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Confirmer la suppression</h2>
+<p>Supprimer l’utilisateur <strong>{{ user.username }}</strong> ?</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger">Oui, supprimer</button>
+  <a class="btn btn-secondary" href="{% url 'user_management' %}">Annuler</a>
+</form>
+{% endblock %}

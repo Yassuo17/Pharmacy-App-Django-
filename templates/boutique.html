@@ -1,0 +1,254 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Yass Pharmacy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="{% static 'website/fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="{% url 'shop' %}" class="js-logo-clone">Yass Pharmacy</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                 <li><a href="{% url 'shop' %}">Home</a></li>
+<li class="active"><a href="{% url 'boutique' %}">Store</a></li>
+<li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="{% url 'cart' %}" class="icons-btn d-inline-block bag">
+  <span class="icon-shopping-bag"></span>
+  
+</a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                class="icon-menu"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="{% url 'shop' %}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Store</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
+            <div id="slider-range" class="border-primary"></div>
+            <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+          </div>
+          <div class="col-lg-6">
+            <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Reference</h3>
+            <button type="button" class="btn btn-secondary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
+              data-toggle="dropdown">Reference</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+              <a class="dropdown-item" href="?sort=relevance">Relevance</a>
+              <a class="dropdown-item" href="?sort=name_asc">Name, A to Z</a>
+              <a class="dropdown-item" href="?sort=name_desc">Name, Z to A</a>
+            <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="?sort=price_asc">Price, low to high</a>
+              <a class="dropdown-item" href="?sort=price_desc">Price, high to low</a>
+            </div>
+          </div>
+        </div>
+
+       <form method="get" action="{% url 'shopp' %}" class="mb-4">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" placeholder="Rechercher un produit..." value="{{ query }}">
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary" type="submit">Rechercher</button>
+    </div>
+  </div>
+</form>
+
+
+    <div class="row">
+  {% for product in products %}
+  <div class="col-sm-6 col-lg-4 text-center item mb-4">
+    {% if product.is_sale %}
+      <span class="tag">Sale</span>
+    {% endif %}
+    <a href="{% url 'product_detail' product.id %}">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+    </a>
+    <h3 class="text-dark">
+      <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+    </h3>
+    <p class="price">
+      {% if product.old_price %}
+        <del>{{ product.old_price }} DH</del> &mdash;
+      {% endif %}
+      {{ product.price }} DH
+    </p>
+  </div>
+  {% endfor %}
+</div>
+
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="site-section bg-secondary bg-image" style="background-image: url('{% static 'images/bg_2.jpg' %}');">
+  <div class="container">
+    <div class="row align-items-stretch">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('{% static 'website/images/bg_1.jpg' %}');">
+          <div class="banner-1-inner align-self-center">
+            <h2>Produits pharmaceutiques</h2>
+            <p>Produits de hautes qualité</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('{% static 'website/images/bg_2.jpg' %}');">
+          <div class="banner-1-inner ml-auto align-self-center">
+            <h2>evolué par des experts</h2>
+            <p>no experts veillent 24/7 à fournir les medicaments de bonne qualité </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+           <div class="block-7">
+  <h3 class="footer-heading mb-4">About Us</h3>
+  <p>Notre pharmacie en ligne a été fondée pour offrir à chacun un accès simple, rapide et sécurisé à des produits de santé de qualité. Alliant expertise pharmaceutique et innovation technologique, nous nous engageons à accompagner nos clients au quotidien avec sérieux, transparence et efficacité.</p>
+</div>
+
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">types de produits</h3>
+            <ul class="list-unstyled">
+              <li>Supplements</a></li>
+              <li>Vitamines</a></li>
+              <li>Régime Nutrition</a></li>
+              <li>Tea  Coffee</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address">11000, Sala al jadida , Rabat-sale-kenitre , Rabat , Maroc</li>
+                <li class="phone"><a href="tel://23923929210">+212 621839926</a></li>
+                <li class="email">yassinelkhantour@gmail.com</li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+       
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<script src="{% static 'website/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'website/js/jquery-ui.js' %}"></script>
+<script src="{% static 'website/js/popper.min.js' %}"></script>
+<script src="{% static 'website/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'website/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'website/js/aos.js' %}"></script>
+<script src="{% static 'website/js/main.js' %}"></script>
+</body>
+<script>
+  $(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const minPrice = parseInt(urlParams.get('min')) || 0;
+    const maxPrice = parseInt(urlParams.get('max')) || 500;
+
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [minPrice, maxPrice],
+      slide: function(event, ui) {
+        $("#amount").val("DH" + ui.values[0] + " - DH" + ui.values[1]);
+      },
+      change: function(event, ui) {
+        
+        const sort = urlParams.get('sort') || '';
+        window.location.href = `?min=${ui.values[0]}&max=${ui.values[1]}${sort ? '&sort=' + sort : ''}`;
+      }
+    });
+
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+      " - $" + $("#slider-range").slider("values", 1));
+  });
+</script>
+
+</html>

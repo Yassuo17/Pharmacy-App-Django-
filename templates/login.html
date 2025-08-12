@@ -1,0 +1,367 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - Yass Pharmacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg,rgb(196, 198, 209) 0%,rgb(249, 249, 250) 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated background elements */
+    .bg-decoration {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-pills {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .pill-1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .pill-2 { top: 20%; right: 15%; animation-delay: 2s; }
+    .pill-3 { bottom: 30%; left: 20%; animation-delay: 4s; }
+    .pill-4 { bottom: 20%; right: 10%; animation-delay: 1s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 450px;
+      padding: 0 20px;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: slideIn 0.8s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #27ae60, #2ecc71, #16a085);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .pharmacy-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .pharmacy-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pharmacy-icon i {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .login-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-subtitle {
+      color: #7f8c8d;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      border: 2px solid #e8f4f8;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #f8fafc;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #27ae60;
+      box-shadow: 0 0 0 0.2rem rgba(39, 174, 96, 0.25);
+      background: white;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7f8c8d;
+      font-size: 1.1rem;
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      border: none;
+      width: 100%;
+      padding: 0.9rem;
+      margin-top: 1rem;
+      color: white;
+      font-weight: 600;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-login::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-login:hover::before {
+      left: 100%;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+    }
+
+    .alert-danger {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      animation: shake 0.5s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .alert-danger i {
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e8f4f8;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+
+    .signup-link a {
+      color: #27ae60;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .signup-link a:hover {
+      color: #219150;
+      text-decoration: underline;
+    }
+
+    .health-quote {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.8);
+      font-style: italic;
+      font-size: 0.9rem;
+      text-align: center;
+      max-width: 300px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .login-box {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .pharmacy-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .pharmacy-icon i {
+        font-size: 2rem;
+      }
+      
+      .login-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background decorations -->
+  <div class="bg-decoration">
+    <div class="floating-pills pill-1">
+      <i class="fas fa-pills fa-3x"></i>
+    </div>
+    <div class="floating-pills pill-2">
+      <i class="fas fa-capsules fa-2x"></i>
+    </div>
+    <div class="floating-pills pill-3">
+      <i class="fas fa-tablets fa-3x"></i>
+    </div>
+    <div class="floating-pills pill-4">
+      <i class="fas fa-prescription-bottle fa-2x"></i>
+    </div>
+  </div>
+
+  <div class="login-container">
+    <div class="login-box">
+      <div class="pharmacy-header">
+        <div class="pharmacy-icon">
+          <i class="fas fa-prescription-bottle-medical"></i>
+        </div>
+        <h2 class="login-title">Yass Pharmacy</h2>
+        <p class="login-subtitle">Votre santé, notre priorité</p>
+      </div>
+
+      <form method="post">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i>
+            Nom d'utilisateur ou mot de passe invalide.
+          </div>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="id_username" class="form-label">Nom d'utilisateur</label>
+          <div style="position: relative;">
+            <i class="fas fa-user input-icon"></i>
+            {{ form.username|add_class:"form-control" }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="id_password" class="form-label">Mot de passe</label>
+          <div style="position: relative;">
+            <i class="fas fa-lock input-icon"></i>
+            {{ form.password|add_class:"form-control" }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-login">
+          <i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i>
+          Se connecter
+        </button>
+
+        <div class="signup-link">
+          Pas encore de compte ? <a href="{% url 'signup' %}">Créer un compte</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="health-quote">
+    "La santé est un état de complet bien-être physique, mental et social"
+  </div>
+
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

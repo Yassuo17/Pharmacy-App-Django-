@@ -1,0 +1,360 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Yass Pharmacy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+<link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="{% static 'website/fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="{% url 'shop' %}" class="js-logo-clone">Yass Pharmacy</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                 <li class="active"><a href="{% url 'shop' %}">Home</a></li>
+<li><a href="{% url 'boutique' %}">Store</a></li>
+<li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+         
+
+<a href="{% url 'cart' %}" class="icons-btn d-inline-block bag">
+  <span class="icon-shopping-bag"></span>
+  <span class="number">{{ cart_items|length }}</span>
+</a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                class="icon-menu"></span></a>
+                <a href="{% url 'home' %}" class="btn-black" style= 'padding: 100px'>Se déconnecter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div id="mainCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+  <div class="carousel-inner">
+
+    
+    <div class="carousel-item active">
+      <div class="site-blocks-cover" style="background-image: url('{% static "website/images/pharmacienne.jpg" %}');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 mx-auto align-self-center text-center">
+              <h2 class="sub-title">Santé pour Tous</h2>
+              <h1>Bienvenue à Yass Pharmacy</h1>
+              <p><a href="{% url 'boutique' %}" class="btn btn-primary px-5 py-3">Shop Now</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="carousel-item">
+      <div class="site-blocks-cover" style="background-image: url('{% static "website/images/1200x680_gettyimages-1337245790.jpg" %}');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 mx-auto align-self-center text-center">
+              <h2 class="sub-title">Produits Fiables</h2>
+              <h1>Livraison Sécurisée & Rapide</h1>
+              <p><a href="{% url 'about' %}" class="btn btn-light mt-3 px-4 py-2">Learn More</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <div class="site-blocks-cover" style="background-image: url('{% static "website/images/pinkpills.jpg" %}');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 mx-auto align-self-center text-center">
+              <h2 class="sub-title" style="color:black">Santé naturelle</h2>
+              <h1 style="color:black">100% Organiques</h1>
+              <p><a href="{% url 'boutique' %}" class="btn btn-primary px-5 py-3">Browse Products</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+   <div class="carousel-item">
+  <div class="site-blocks-cover" style="background-image: url('{% static "website/images/1200x680_gettyimages-1337245790.jpg" %}');">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+          <div class="site-block-cover-content text-center">
+            <h2 class="sub-title">Produits fiables et recommandés par des professionnels</h2>
+            <h1>LIVRAISON SÉCURISÉE ET RAPIDE</h1>
+            <p><a href="{% url 'about' %}" class="btn btn-light mt-3 px-4 py-2">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row align-items-stretch section-overlap">
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up">
+        <div class="banner-wrap bg-primary h-100">
+          <a href="#" class="h-100 d-block text-white">
+            <h5>Free <br> Shipping</h5>
+            <p>Sur toutes les commandes <strong>Durant ce mois seulement !</strong></p>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+        <div class="banner-wrap h-100 bg-dark">
+          <a href="#" class="h-100 d-block text-white">
+            <h5>🔥 Solde 50%</h5>
+            <p>À ne pas rater ! <strong>Profitez d'une réduction exclusive !</strong></p>
+          </a>
+        </div>
+      </div>
+     
+
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+        <div class="banner-wrap bg-warning h-100">
+          <a href="#" class="h-100 d-block text-dark">
+            <h5>Buy <br> A Gift Card</h5>
+            <p>Pour vos proches <strong>Offrez un bon d'achat surprise 🎁</strong></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="title-section text-center col-12">
+        <h2 class="text-uppercase">Nos Produits</h2>
+      </div>
+    </div>
+  
+</div>
+<section id="products" class="site-section">
+<div class="row">
+  <div class="col-md-12 block-3 products-wrap">
+ <div class="nonloop-block-3 owl-carousel">
+  
+
+  {% for product in products %}
+  <div class="item text-center mb-4">
+    <a href="{% url 'product_detail' product.id %}">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid" style="height: 200px; object-fit: contain;">
+      {% else %}
+        <img src="{% static 'website/images/no-image.png' %}" alt="No image" class="img-fluid" style="height: 200px; object-fit: contain;">
+      {% endif %}
+
+      <h3 class="text-dark mt-2">
+        {{ product.name|default:"Unnamed Product" }}
+      </h3>
+
+      <p class="price">
+        {% if product.old_price %}
+          <del>{{ product.old_price }} DH</del> —
+        {% endif %}
+        {{ product.price }} DH
+      </p>
+    </a>
+  </div>
+{% endfor %}
+
+  
+</div>
+</section>
+
+
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+   {% load static %}
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="title-section text-center col-12">
+        <h2 class="text-uppercase">Testimonials</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 block-3 products-wrap">
+       <div class="nonloop-block-3 no-direction owl-carousel">
+  {% for t in testimonials %}
+  <div class="testimony">
+    <blockquote> 
+      <p>&mdash; {{ t.user.first_name|default:t.user.username }}</p>
+      <p>&ldquo;{{ t.message|linebreaksbr }}&rdquo;</p>
+    </blockquote>
+   
+  </div>
+  {% empty %}
+  <p class="text-center">Aucun témoignage pour le moment.</p>
+  {% endfor %}
+ </div>
+   <div class="text-center mt-4">
+  <a href="{% url 'submit_testimonial' %}" class="btn btn-outline-primary">Écrire un témoignage</a>
+</div>
+
+
+     
+
+</div>
+
+
+   {% load static %}
+
+
+
+      
+<div class="site-section bg-secondary bg-image" style="background-image: url('{% static 'images/bg_2.jpg' %}');">
+  <div class="container">
+    <div class="row align-items-stretch">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('{% static 'website/images/bg_1.jpg' %}');">
+          <div class="banner-1-inner align-self-center">
+            <h2>Produits pharmaceutiques</h2>
+            <p>Produits de hautes qualité</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('{% static 'website/images/bg_2.jpg' %}');">
+          <div class="banner-1-inner ml-auto align-self-center">
+            <h2>evolué par des experts</h2>
+            <p>no experts veillent 24/7 à fournir les medicaments de bonne qualité </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+           <div class="block-7">
+  <h3 class="footer-heading mb-4">About Us</h3>
+  <p>Notre pharmacie en ligne a été fondée pour offrir à chacun un accès simple, rapide et sécurisé à des produits de santé de qualité. Alliant expertise pharmaceutique et innovation technologique, nous nous engageons à accompagner nos clients au quotidien avec sérieux, transparence et efficacité.</p>
+</div>
+
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">types de produits</h3>
+            <ul class="list-unstyled">
+              <li>Supplements</a></li>
+              <li>Vitamines</a></li>
+              <li>Régime Nutrition</a></li>
+              <li>Tea  Coffee</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address">11000, Sala al jadida , Rabat-sale-kenitre , Rabat , Maroc</li>
+                <li class="phone"><a href="tel://23923929210">+212 621839926</a></li>
+                <li class="email">yassinelkhantour@gmail.com</li>
+              </ul>
+            </div>
+            
+</div>
+
+
+          </div>
+        </div>
+        
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+{% load static %}
+
+<script src="{% static 'website/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'website/js/jquery-ui.js' %}"></script>
+<script src="{% static 'website/js/popper.min.js' %}"></script>
+<script src="{% static 'website/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'website/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'website/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'website/js/aos.js' %}"></script>
+<script src="{% static 'website/js/main.js' %}"></script>
+
+</body>
+
+</html>
